@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controller\.gitkeep" />
+    <None Remove="Extensions\.gitkeep" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controller\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.34" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.0.1" />
+    <PackageReference Include="QSI.Security.Api.AspNetCore" Version="2.8.1-build01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lokpie.Common\Lokpie.Common.csproj" />
+    <ProjectReference Include="..\Lokpie.Service\Lokpie.Service.csproj" />
+  </ItemGroup>
+
+</Project>

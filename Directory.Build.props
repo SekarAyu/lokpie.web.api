@@ -1,0 +1,18 @@
+<Project>
+  <!-- These properties will be shared for all projects -->
+
+  <PropertyGroup>
+    <Copyright>Copyright � 2022 Quadrant</Copyright>
+    <Company>Quadrant</Company>
+    <Version>1.0.0-build03</Version>
+    <Authors>Ayusoo</Authors>
+    <PackageIconUrl>http://devops.quadrant-si.id/icons/qsi-icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <Description>Lokpie API</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+  
+</Project>

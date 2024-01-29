@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  lokpie.engine.docker.linux:
+    image: lokpie-engine-docker-linux
+    container_name: lokpie
+    build:
+      context: .
+      dockerfile: Lokpie.Engine.Docker.Linux/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:80
+      - orm__connection__connectionString=Server=quadrant.local,1433;Database=agentdev;User ID=dev;Password=123456
+      - masstransit__masstransitConfiguration__baseUrl=rabbitmq://host.docker.internal:5672/qsi_vhost
+    ports:
+      - "5000:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "quadrant.local:192.168.85.5"

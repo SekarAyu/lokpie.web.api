@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Impl\.gitkeep" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="QSI.Document.Common" Version="1.11.7-build03" />
+    <PackageReference Include="QSI.Document.Service" Version="1.11.7-build03" />
+    <PackageReference Include="Quartz" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lokpie.Common\Lokpie.Common.csproj" />
+    <ProjectReference Include="..\Lokpie.Repository\Lokpie.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

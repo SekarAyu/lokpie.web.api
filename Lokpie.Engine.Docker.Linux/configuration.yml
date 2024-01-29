@@ -1,0 +1,86 @@
+﻿orm:
+  connection:
+    databaseType: MSSQL2012
+    #connectionString: "Server=tcp:(local),1433;Database=agentdev;User ID=sa;Password=DevOpsQSI123@!"
+    connectionString: "Server=tcp:localhost,1433;Database=lokpiedev;User ID=sa;Password=DevOpsQSI123@!"
+  helper:
+    showSql: false
+    formatSql: false
+  build:
+    create: false
+    update: true
+    scriptPath: SqlScript
+    scriptFileName: build.sql
+  map:
+    assemblies:
+      - QSI.Security.Repository.NHibernate
+      - Lokpie.Repository.NHibernate
+      - QSI.Document.Repository.NHibernate
+
+jwt:
+  issuer: "https://mobile.dev.quadrant-si.id/agentdev/"
+  key: SOME_RANDOM_KEY_DO_NOT_SHARE
+  client: QMAGENT
+  expiredInMinutes: 30
+  requireHttpsMetadata: false
+  saveToken: true
+
+automapper:
+  - QSI.Security.Service
+  - Lokpie.Service
+
+cors:
+  credentials: false
+  origins:
+    - "*"
+  headers:
+    - "*"
+  methods:
+    - "*"
+
+swagger:
+  securityDefinition: JWT
+  versioningMethod:
+    - type: HEADER
+      value: 'api-version'
+  behindProxy: false
+  generator:
+    doc:
+      name: v1
+      info:
+        title: Lokpie API
+        version: '1.0'
+    describeAllEnumsAsStrings: true
+  route: 
+    template: 'api/docs/{documentName}/swagger.json'
+  ui:
+    prefix: api/docs
+    documentTitle: Lokpie API
+    endpoint:
+      url: /swagger.json
+      name: Lokpie API
+
+masstransit:
+  masstransitConfiguration:
+    baseUrl: rabbitmq://armadillo.rmq.cloudamqp.com/ywlbpauw
+    username: ywlbpauw
+    password: 3TeWF5S3AuDFjFk9kq4XUVIdDjmByENy
+    endpoints:
+      - queueName: example-service
+        messageRetry: 
+          retryCount: 3
+          retryInterval: 3000
+        consumers:
+  messageBroker: RabbitMQ
+
+quartz:
+  instanceName: Example API Scheduler
+  jobStoreType: "RAM"
+  threadCount: 3
+  scheduler:
+    - name: purchaseorder
+      groupName: group1 # optional
+      description: "Hot Menu Rank Job" # optional
+      cronJob: "0 0 1 * * ?"
+      assembly: Lokpie.Service
+      type: Lokpie.Service.Quartz.HotMenuRankJob
