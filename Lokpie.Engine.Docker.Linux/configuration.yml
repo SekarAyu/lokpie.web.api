@@ -1,8 +1,8 @@
 ﻿orm:
   connection:
     databaseType: MSSQL2012
-    #connectionString: "Server=tcp:(local),1433;Database=agentdev;User ID=sa;Password=DevOpsQSI123@!"
-    connectionString: "Server=tcp:localhost,1433;Database=lokpiedev;User ID=sa;Password=DevOpsQSI123@!"
+    #connectionString: ""
+    connectionString: ""
   helper:
     showSql: false
     formatSql: false
@@ -18,9 +18,9 @@
       - QSI.Document.Repository.NHibernate
 
 jwt:
-  issuer: "https://mobile.dev.quadrant-si.id/agentdev/"
-  key: SOME_RANDOM_KEY_DO_NOT_SHARE
-  client: QMAGENT
+  issuer: ""
+  key: 
+  client: 
   expiredInMinutes: 30
   requireHttpsMetadata: false
   saveToken: true
@@ -62,9 +62,9 @@ swagger:
 
 masstransit:
   masstransitConfiguration:
-    baseUrl: rabbitmq://armadillo.rmq.cloudamqp.com/ywlbpauw
-    username: ywlbpauw
-    password: 3TeWF5S3AuDFjFk9kq4XUVIdDjmByENy
+    baseUrl: 
+    username: 
+    password: 
     endpoints:
       - queueName: example-service
         messageRetry: 
